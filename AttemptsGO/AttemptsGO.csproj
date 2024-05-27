@@ -59,25 +59,4 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <MauiXaml Update="Resources\Styles\MyStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\HistoryPopup.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Views\HistoryPopup.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </None>
-	</ItemGroup>
-
-	<PropertyGroup Label="MauiAppAccelerator">
-		<wizardVersion>v1.4.2</wizardVersion>
-		<projectType>MVVMToolkit</projectType>
-		<framework>Blank</framework>
-	</PropertyGroup>
-
 </Project>

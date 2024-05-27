@@ -4,7 +4,7 @@
 			 xmlns:vm="clr-namespace:AttemptsGO.ViewModels"
 			 x:Class="AttemptsGO.Views.LobbyPage"
 			 x:DataType="vm:LobbyViewModel">
-    <Grid Padding="20" RowDefinitions="*,300">
+    <Grid Padding="20" RowDefinitions="*,200">
         <VerticalStackLayout 
             HorizontalOptions="Fill"
             VerticalOptions="Center"
@@ -15,19 +15,7 @@
                 FontSize="64"
                 FontFamily="SamsungSans"
                 FontAttributes="Bold"/>
-            <Label
-                Text="GO"
-                HorizontalTextAlignment="Center"
-                Margin="0,0,0,90"
-                FontSize="64"
-                FontFamily="SamsungSans"
-                FontAttributes="Bold">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        NumberOfTapsRequired="2"
-                        Command="{Binding StartCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
+
             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10">
                 <Label
                     Text="Player 1"
@@ -117,16 +105,26 @@
                         </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
-                <Button
-                    Grid.ColumnSpan="2"
-                    Grid.Row="3"
-                    Text="Start!"
-                    FontSize="Large"
-                    FontFamily="SamsungSans"
-                    Command="{Binding StartCommand}"
-                    FontAttributes="Bold"
-                    Margin="20"/>
             </Grid>
+            <Border StrokeShape="RoundRectangle 20"
+        BackgroundColor="MediumPurple"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+            NumberOfTapsRequired="1"
+            Command="{Binding StartCommand}"/>
+                </Border.GestureRecognizers>
+                <Label
+                    Text="GO"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="50,5"
+                    FontSize="64"
+                    FontFamily="SamsungSans"
+                    FontAttributes="Bold">
+                </Label>
+            </Border>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
