@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:AttemptsGO.ViewModels"
+			 x:Class="AttemptsGO.Views.LobbyPage"
+			 x:DataType="vm:LobbyViewModel">
+    <Grid Padding="20" RowDefinitions="*,300">
+        <VerticalStackLayout 
+            HorizontalOptions="Fill"
+            VerticalOptions="Center"
+            Spacing="10">
+            <Label
+                Text="ATTEMPTS"
+                HorizontalTextAlignment="Center"
+                FontSize="64"
+                FontFamily="SamsungSans"
+                FontAttributes="Bold"/>
+            <Label
+                Text="GO"
+                HorizontalTextAlignment="Center"
+                Margin="0,0,0,90"
+                FontSize="64"
+                FontFamily="SamsungSans"
+                FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        NumberOfTapsRequired="2"
+                        Command="{Binding StartCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="10">
+                <Label
+                    Text="Player 1"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Medium"
+                    FontFamily="SamsungSans"
+                    FontAttributes="Bold"/>
+                <Label
+                    Text="Player 2"
+                    Grid.Column="1"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Medium"
+                    FontFamily="SamsungSans"
+                    FontAttributes="Bold"/>
+
+                <Border StrokeShape="RoundRectangle 10" Grid.Row="1">
+                    <Entry
+                        Text="{Binding P1Name}"
+                        IsReadOnly="True"
+                        Placeholder="P1 Name" 
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SamsungSans"
+                        FontAttributes="Bold">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer
+                                NumberOfTapsRequired="2"
+                                Command="{Binding RandomizeNameCommand}"
+                                CommandParameter="1"/>
+                        </Entry.GestureRecognizers>
+                    </Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" Grid.Row="1" Grid.Column="1">
+                    <Entry 
+                        Text="{Binding P2Name}"
+                        IsReadOnly="True"
+                        Placeholder="P2 Name"
+                        HorizontalTextAlignment="Center"
+                        FontSize="Large"
+                        FontFamily="SamsungSans"
+                        FontAttributes="Bold">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer
+                                NumberOfTapsRequired="2"
+                                Command="{Binding RandomizeNameCommand}"
+                                CommandParameter="2"/>
+                        </Entry.GestureRecognizers>
+                    </Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" Grid.Row="2">
+                    <Entry
+                        x:Name="P1NumberEntry"
+                        Text="{Binding P1Number}"
+                        MaxLength="4"
+                        Placeholder="P1 Number" 
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SamsungSans"
+                        IsPassword="True"
+                        Keyboard="Numeric"
+                        FontAttributes="Bold">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer
+                                NumberOfTapsRequired="2"
+                                Command="{Binding RandomizeCommand}"
+                                CommandParameter="1"/>
+                        </Entry.GestureRecognizers>
+                    </Entry>
+                </Border>
+                <Border StrokeShape="RoundRectangle 10" Grid.Row="2" Grid.Column="1">
+                    <Entry
+                        x:Name="P2NumberEntry"
+                        Text="{Binding P2Number}"
+                        MaxLength="4"
+                        Placeholder="P2 Number" 
+                        HorizontalTextAlignment="Center"
+                        FontSize="Large"
+                        FontFamily="SamsungSans"
+                        IsPassword="True"
+                        Keyboard="Numeric"
+                        FontAttributes="Bold">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer
+                                NumberOfTapsRequired="2"
+                                Command="{Binding RandomizeCommand}"
+                                CommandParameter="2"/>
+                        </Entry.GestureRecognizers>
+                    </Entry>
+                </Border>
+                <Button
+                    Grid.ColumnSpan="2"
+                    Grid.Row="3"
+                    Text="Start!"
+                    FontSize="Large"
+                    FontFamily="SamsungSans"
+                    Command="{Binding StartCommand}"
+                    FontAttributes="Bold"
+                    Margin="20"/>
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
+
+    

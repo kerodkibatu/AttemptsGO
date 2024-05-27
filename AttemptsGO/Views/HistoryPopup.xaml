@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:vm="clr-namespace:AttemptsGO.ViewModels"
+          x:Class="AttemptsGO.Views.HistoryPopup"
+          x:DataType="vm:GameViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="SamsungSans" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="SamsungSans" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="SamsungSans" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Label
+            Text="{Binding WinnerAnnounce}"
+            FontSize="45"
+            TextColor="GreenYellow"
+            HorizontalTextAlignment="Center"/>
+        <Grid Padding="30,0" Grid.Row="1" ColumnDefinitions="*,*,*" BackgroundColor="MediumPurple">
+            <Label Text="Att"/>
+            <Label Text="No" Grid.Column="1" HorizontalTextAlignment="Center"/>
+            <Label Text="Pos" Grid.Column="2" HorizontalTextAlignment="Center"/>
+        </Grid>
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding WinnerHistory}"
+            ItemsUpdatingScrollMode="KeepLastItemInView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:Attempt">
+                    <Grid Padding="30,0" ColumnDefinitions="*,*,*">
+                        <Label Text="{Binding Att}"/>
+                        <Label Grid.Column="1" Text="{Binding No}" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="2" Text="{Binding Pos}" HorizontalTextAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Row="3" Text="Play Again!" Command="{Binding NewGameCommand}"/>
+    </Grid>
+</ContentPage>

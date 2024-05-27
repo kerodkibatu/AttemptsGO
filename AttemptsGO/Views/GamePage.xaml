@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:AttemptsGO.ViewModels"
+			 x:Class="AttemptsGO.Views.GamePage"
+			 x:DataType="vm:GameViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="SamsungSans" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="SamsungSans" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="SamsungSans" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*,Auto,*">
+        <Grid Rotation="180" ColumnDefinitions="2*,3*" RowDefinitions="Auto,Auto,*" Padding="10">
+            <Label Text="{Binding P2Name}" FontSize="Large" HorizontalOptions="Center"/>
+            <Grid Grid.Row="1" ColumnDefinitions="*,*,*" BackgroundColor="MediumPurple">
+                <Label Text="Att"/>
+                <Label Text="No" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                <Label Text="Pos" Grid.Column="2" HorizontalTextAlignment="Center"/>
+            </Grid>
+            
+            <CollectionView
+                Grid.Row="2"
+                ItemsSource="{Binding P2Attempts}"
+                ItemsUpdatingScrollMode="KeepLastItemInView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:Attempt">
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Text="{Binding Att}"/>
+                            <Label Grid.Column="1" Text="{Binding No}" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="2" Text="{Binding Pos}" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                ColumnDefinitions="*,*,*"
+                RowDefinitions="Auto,Auto,*,*,*"
+                ColumnSpacing="5"
+                RowSpacing="5"
+                Padding="10">
+                <Entry
+                    IsReadOnly="True"
+                    Text="{Binding P2Entry}"
+                    Placeholder="1234"
+                    FontSize="Large"
+                    Grid.ColumnSpan="2"
+                    HorizontalTextAlignment="Center"/>
+                <ImageButton Grid.Column="2" HeightRequest="50" Aspect="AspectFit" Source="delete.png" Command="{Binding P2EraseCommand}"/>
+
+                <Button Grid.Row="1" BackgroundColor="CornflowerBlue" Grid.ColumnSpan="3" Text="Guess" Command="{Binding GuessP2Command}"/>
+
+
+                <Button Grid.Row="2" Grid.Column="0" Text="1" Command="{Binding AddP2EntryCommand}" CommandParameter="1"/>
+                <Button Grid.Row="2" Grid.Column="1" Text="2" Command="{Binding AddP2EntryCommand}" CommandParameter="2"/>
+                <Button Grid.Row="2" Grid.Column="2" Text="3" Command="{Binding AddP2EntryCommand}" CommandParameter="3"/>
+                <Button Grid.Row="3" Grid.Column="0" Text="4" Command="{Binding AddP2EntryCommand}" CommandParameter="4"/>
+                <Button Grid.Row="3" Grid.Column="1" Text="5" Command="{Binding AddP2EntryCommand}" CommandParameter="5"/>
+                <Button Grid.Row="3" Grid.Column="2" Text="6" Command="{Binding AddP2EntryCommand}" CommandParameter="6"/>
+                <Button Grid.Row="4" Grid.Column="0" Text="7" Command="{Binding AddP2EntryCommand}" CommandParameter="7"/>
+                <Button Grid.Row="4" Grid.Column="1" Text="8" Command="{Binding AddP2EntryCommand}" CommandParameter="8"/>
+                <Button Grid.Row="4" Grid.Column="2" Text="9" Command="{Binding AddP2EntryCommand}" CommandParameter="9"/>
+            </Grid>
+        </Grid>
+        <BoxView BackgroundColor="Gainsboro" HeightRequest="3" Grid.Row="1"/>
+        <Grid Grid.Row="2" ColumnDefinitions="2*,3*" RowDefinitions="Auto,Auto,*" Padding="10">
+            <Label Text="{Binding P1Name}" FontSize="Large" HorizontalOptions="Center"/>
+            <Grid Grid.Row="1" ColumnDefinitions="*,*,*" BackgroundColor="MediumPurple">
+                <Label Text="Att"/>
+                <Label Text="No" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                <Label Text="Pos" Grid.Column="2" HorizontalTextAlignment="Center"/>
+            </Grid>
+            <CollectionView
+                Grid.Row="2"
+                ItemsSource="{Binding P1Attempts}"
+                ItemsUpdatingScrollMode="KeepLastItemInView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:Attempt">
+                        <Grid ColumnDefinitions="*,*,*">
+                            <Label Text="{Binding Att}"/>
+                            <Label Grid.Column="1" Text="{Binding No}" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="2" Text="{Binding Pos}" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                ColumnDefinitions="*,*,*"
+                RowDefinitions="Auto,Auto,*,*,*"
+                ColumnSpacing="5"
+                RowSpacing="5"
+                Padding="10">
+                <Entry
+                    IsReadOnly="True"
+                    Text="{Binding P1Entry}"
+                    Placeholder="1234"
+                    FontSize="Large"
+                    Grid.ColumnSpan="2"
+                    HorizontalTextAlignment="Center"/>
+                
+                <ImageButton Grid.Column="2" HeightRequest="50" Aspect="AspectFit" Source="delete.png" Command="{Binding P1EraseCommand}"/>
+
+                <Button Grid.Row="1" BackgroundColor="CornflowerBlue" Grid.ColumnSpan="3" Text="Guess" Command="{Binding GuessP1Command}"/>
+
+
+                <Button Grid.Row="2" Grid.Column="0" Text="1" Command="{Binding AddP1EntryCommand}" CommandParameter="1"/>
+                <Button Grid.Row="2" Grid.Column="1" Text="2" Command="{Binding AddP1EntryCommand}" CommandParameter="2"/>
+                <Button Grid.Row="2" Grid.Column="2" Text="3" Command="{Binding AddP1EntryCommand}" CommandParameter="3"/>
+                <Button Grid.Row="3" Grid.Column="0" Text="4" Command="{Binding AddP1EntryCommand}" CommandParameter="4"/>
+                <Button Grid.Row="3" Grid.Column="1" Text="5" Command="{Binding AddP1EntryCommand}" CommandParameter="5"/>
+                <Button Grid.Row="3" Grid.Column="2" Text="6" Command="{Binding AddP1EntryCommand}" CommandParameter="6"/>
+                <Button Grid.Row="4" Grid.Column="0" Text="7" Command="{Binding AddP1EntryCommand}" CommandParameter="7"/>
+                <Button Grid.Row="4" Grid.Column="1" Text="8" Command="{Binding AddP1EntryCommand}" CommandParameter="8"/>
+                <Button Grid.Row="4" Grid.Column="2" Text="9" Command="{Binding AddP1EntryCommand}" CommandParameter="9"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
